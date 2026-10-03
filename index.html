@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#09090b" />
+  <title>YN Music — AI Music Search</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="./">YN<span>Music</span></a>
+      <nav>
+        <button class="nav active" data-view="home">⌂ <span>Khám phá</span></button>
+        <button class="nav" data-view="favorites">♥ <span>Yêu thích</span></button>
+        <button class="nav" data-view="history">↺ <span>Lịch sử</span></button>
+      </nav>
+      <div class="side-note">Tìm nhạc bằng ngôn ngữ tự nhiên.<br>Ví dụ: “nhạc Việt chill để code”.</div>
+    </aside>
+
+    <main>
+      <header>
+        <form id="searchForm" class="search">
+          <span>⌕</span>
+          <input id="searchInput" autocomplete="off"
+            placeholder="Bạn muốn nghe gì? Ví dụ: nhạc Việt chill để code..." />
+          <button id="searchBtn" type="submit">Tìm bằng AI</button>
+        </form>
+      </header>
+
+      <section class="hero">
+        <div>
+          <div class="eyebrow">AI MUSIC SEARCH</div>
+          <h1>Nghe đúng mood.<br><em>Không cần nhớ tên bài.</em></h1>
+          <p>Mô tả thể loại, tâm trạng, hoạt động hoặc nghệ sĩ. AI sẽ biến ý định của bạn thành truy vấn nhạc phù hợp.</p>
+          <div class="chips" id="chips">
+            <button>Nhạc Việt chill để code</button>
+            <button>Bolero buồn nhẹ nhàng</button>
+            <button>EDM năng lượng tập gym</button>
+            <button>Acoustic cafe buổi sáng</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="content">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" id="resultEyebrow">GỢI Ý</div>
+            <h2 id="resultTitle">Bắt đầu bằng một cảm xúc</h2>
+          </div>
+          <div id="aiReason" class="ai-reason"></div>
+        </div>
+        <div id="status" class="status"></div>
+        <div id="results" class="results empty">
+          <div class="empty-state">♫<br><span>Kết quả tìm kiếm sẽ xuất hiện ở đây</span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="player">
+    <div class="now">
+      <img id="nowCover" alt="" />
+      <div><strong id="nowTitle">Chưa phát bài nào</strong><span id="nowArtist">YN Music</span></div>
+    </div>
+    <div class="controls">
+      <button id="prevBtn" title="Trước">⏮</button>
+      <button id="playBtn" class="play" title="Phát / tạm dừng">▶</button>
+      <button id="nextBtn" title="Tiếp">⏭</button>
+    </div>
+    <div class="player-actions">
+      <button id="favNow" title="Yêu thích">♡</button>
+      <a id="youtubeLink" target="_blank" rel="noopener" class="yt-link">YouTube ↗</a>
+    </div>
+  </footer>
+
+  <div id="videoShell" class="video-shell">
+    <div id="youtubePlayer"></div>
+  </div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
