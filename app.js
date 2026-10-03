@@ -14,8 +14,34 @@ function setStatus(s){$("#status").textContent=s||"";}
 
 window.onYouTubeIframeAPIReady = () => {
   state.player = new YT.Player("youtubePlayer", {
-    height:"1", width:"1",
-    playerVars:{autoplay:0,controls:0,playsinline:1},
+  height: "270",
+  width: "480",
+
+  playerVars: {
+    autoplay: 0,
+    controls: 1,
+    playsinline: 1,
+    origin: window.location.origin
+  },
+
+  events: {
+    onReady: () => {
+      state.playerReady = true;
+    },
+
+    onStateChange: e => {
+      if (e.data === YT.PlayerState.ENDED) next();
+
+      $("#playBtn").textContent =
+        e.data === YT.PlayerState.PLAYING ? "❚❚" : "▶";
+    },
+
+    onError: e => {
+      console.error("YouTube Player Error:", e.data);
+      setStatus("Không phát được video này. YouTube error: " + e.data);
+    }
+  }
+});
     events:{
       onReady:()=>state.playerReady=true,
       onStateChange:e=>{
